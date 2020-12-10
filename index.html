@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My-Memes-Page</title>
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body onload="init()">
+
+
+
+
+    <header>
+        <img class="logo" src="logo/LOGO.png" alt="">
+        <div class="nav-bar">
+            <ul>
+                <li><button onclick="onOpenSaved()" class="">My Memes</button></li>
+                <li><button class=" btn-return" hidden onclick="onReturn()"> back to gallery</button></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="gallery-background">
+
+        <section class="gallery-container">
+            <div class="gallery">
+
+            </div>
+        </section>
+    </div>
+
+
+    <div class="container" hidden>
+        <div class="main-contant">
+
+            <div class="canvas-container">
+
+                <canvas class="my-canvas" height="450" width="450"> </canvas>
+            </div>
+
+            <div class="user-prefs">
+
+                <div class="submit">
+                    <button class="btn save-btn" onclick="onSaveMeme()" > save</button>
+
+                    <input class="input" name="text-line" type="text" placeholder="give us your funny text">
+                    <button class="btn btn-submit" onclick="onSubmit()"> <img class="icons" src="icons/add.png"
+                            alt=""></button>
+                </div>
+
+                <div class="tools">
+
+
+                    <button class="changes-btn" onclick="onMoveUp()">
+                        <img class="icons" src="icons/up.jpg" alt="">
+                    </button>
+
+                    <button class="changes-btn" onclick="onMoveDown()">
+                        <img class="icons" src="icons/down.jpg" alt="">
+                    </button>
+
+
+
+                    <button class="changes-btn" onclick="onIncreaseFont()">
+                        <img class="icons" src="icons/increase font - icon.png" alt="">
+                    </button>
+
+                    <button class="changes-btn" onclick="onDecreaseFont()">
+                        <img class="icons" src="icons/decrease font - icon.png" alt="">
+                    </button>
+
+                    <button class="changes-btn switch" onclick="onSwitchLines()">
+                        <img class="icons" src="icons/switch.jpg" alt="">
+                    </button>
+                </div>
+
+                <div>  <a href="#" onclick="downloadCanvas(this)"> <img class="icons" src="icons/save.jpg" alt=""></a></div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+    <script src="js/storage.js"></script>
+    <script src="js/memes-service.js"></script>
+    <script src="js/mems-controller.js"></script>
+</body>
+
+</html>
