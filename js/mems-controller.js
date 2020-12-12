@@ -167,15 +167,14 @@ function drawRect(x, y, width, height) {
     gCtx.beginPath()
     gCtx.strokeStyle = 'white'
     var align = meme.lines[meme.selectedLineIdx].align
-    console.log(width)
-    if (meme.lines[meme.selectedLineIdx].txt.length >=6 && meme.lines[meme.selectedLineIdx].txt.length<11 ) {
+    if (meme.lines[meme.selectedLineIdx].txt.length >= 6 && meme.lines[meme.selectedLineIdx].txt.length < 11) {
         console.log('bigger the 6')
         width *= 2
         console.log(width)
     }
-    else if(meme.lines[meme.selectedLineIdx].txt.length >=11){
+    else if (meme.lines[meme.selectedLineIdx].txt.length >= 11) {
         console.log('bigger the 11')
-        width *=3
+        width *= 3
         console.log(width)
     }
     if (align === 'left') {
@@ -306,3 +305,15 @@ function onFilterGallery(ev) {
     if (gImgs.length === 0) gImgs = gImgsCopy
     renderGallery()
 }
+
+function handleTouch(ev) {
+    var meme = getMemeForDisplay()
+    ev.preventDefault()
+    gCanvas = document.querySelector('.my-canvas')
+    const gCan = new Hammer(gCanvas);
+    gCan.on('pan', function (ev) {
+        touchAndDrop((ev.center.x), (ev.center.y))
+        renderCanvas(meme.selectedImgId)
+    });
+}
+

@@ -81,6 +81,15 @@ function showCanvas() {
     gCanvas.width = (elCanvasContainer.offsetWidth) * 0.8
     gCanvas.height = (elCanvasContainer.offsetHeight) * 0.85
 }
+function touchAndDrop(x,y){
+    console.log('xx',x)
+    console.log('ofset',gCtx.canvas.offsetLeft)
+    var X = x-gCtx.canvas.offsetLeft
+    var Y = y-gCtx.canvas.offsetTop
+
+    gMeme.lines[gMeme.selectedLineIdx].x = X
+    gMeme.lines[gMeme.selectedLineIdx].y = Y
+}
 
 function getMemeForDisplay() {
     return gMeme

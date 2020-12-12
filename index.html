@@ -50,8 +50,8 @@
 
             <div class="canvas-container">
 
-                <canvas onmousemove="onMove(event)" onmousedown="onDrag(event)" onmouseup="onDrop(event)"
-                    class="my-canvas" height="450" width="450"> </canvas>
+                <canvas ontouchmove="handleTouch(event)" onmousemove="onMove(event)" onmousedown="onDrag(event)"
+                    onmouseup="onDrop(event)" class="my-canvas" height="450" width="450"> </canvas>
             </div>
 
 
@@ -191,7 +191,7 @@
         }
     </script>
 
-
+    <script src="lib/hammer.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/memes-service.js"></script>
     <script src="js/mems-controller.js"></script>
