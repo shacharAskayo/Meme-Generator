@@ -21,10 +21,12 @@
         </div>
         <div class="nav-bar">
             <ul>
-                <li><button onclick="onOpenSaved()" class="saved">My Memes</button></li>
-                <li><button class=" btn-return" hidden onclick="onReturn()"> back to gallery</button></li>
+                <li><button class="nav-btn" onclick="onOpenSaved()" class="saved">My Memes</button></li>
+                <li><button class="nav-btn btn-return" hidden onclick="onReturn()"> back to gallery</button></li>
             </ul>
         </div>
+        <button hidden class="menu-btn" onclick="toggleMenu()">☰</button>
+
     </header>
 
 
@@ -182,7 +184,12 @@
 
     </div>
 
+    <script>
+        function toggleMenu() {
+            document.body.classList.toggle('open')
 
+        }
+    </script>
 
 
     <script src="js/storage.js"></script>

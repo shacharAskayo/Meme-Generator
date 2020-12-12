@@ -27,6 +27,8 @@ body {
     margin-bottom: 10px;
 }
 
+
+
 .search-bar{
     display: flex;
     flex-direction: column;
@@ -58,6 +60,14 @@ header {
     align-items: center;
     box-shadow: -10px 6px 5px #27272780;
 }
+.menu-btn{
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+
+}
 
 .nav-bar ul {
     display: flex;
@@ -74,7 +84,7 @@ header {
     box-shadow: inset 0px 8px 6px 1px #27272780;
 }
 
-.nav-bar button {
+.nav-btn {
     transition: all 0.2s;
     border: 1px solid #FF9800;
     height: 20vh;
@@ -112,8 +122,8 @@ header {
     grid-template-areas: 
     "moveUp moveUp moveDown moveDown"
     "sizeUp sizeUp sizeDown sizeDown"
-    "fillColor fillColor strokeColor strokeColor"
-    "alignLeft fontFamily fontFamily alignRight"
+    "fillColor fontFamily fontFamily strokeColor"
+    "fillColor fontFamily fontFamily  strokeColor"
     "alignLeft  alignCenter alignCenter  alignRight"
     "alignLeft trash trash alignRight "
     "switch switch switch switch"
@@ -184,11 +194,11 @@ header {
 
 .changes-btn.btn12{
     grid-area: switch ;
-    background-color: #868886;
+    background-color: steelblue;
 }
 .changes-btn.btn13{
     grid-area: finish ;
-    background-color: #868886;
+    background-color:  steelblue;
 }
 .emojis-container{
     grid-area: emojis;
@@ -281,9 +291,11 @@ canvas {
 .finish-editing{
     font-family: lato;
     color: white;
+    font-size: 13px;
+    line-height: 14px;
 }
 .changes-btn.download{
-    background-color: #ff980017;
+    background-color: #dedcda;;
 }
 
 
@@ -361,9 +373,6 @@ canvas {
     
 }
 
-.icons.edit{
-    background-color: blue
-}
 footer{
     margin: 0 auto;
     background: #2f3c3c;
@@ -388,13 +397,17 @@ footer{
         margin: 0;
     }
     .gallery {
-        display: block;
         border: 0;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(1,1fr);
+        gap: 0;
     }
     .gallery img {
-        width: 100vw;
-        height: 66vh;
-        gap: 10px;
+        justify-self: center;
+        width: 40vw;
+        height: 20vh;
+        /* gap: 10px; */
         margin-bottom: 10px;
     }
     .main-contant {
@@ -409,9 +422,38 @@ footer{
         width: 90vw;
         height: 50vh;
     }
-    .nav-bar button {
+    .menu-btn{
+        display: block;
+        z-index: 2;
+        width: 35px;
+        height: 35px;
+        border-radius: 5px;
+        border: 0;
+        background-color: #FF9800;
+        
+    }
+
+    body.open .nav-bar{
+        transform: translate(0%, 0%);
+
+    }
+    .nav-bar {
+        z-index: 1;
+        position: fixed;
+        transition: transform 0.8s;
+        transform: translate(0%, -100%);
+        margin: 0;
         padding: 0;
-        height: 7vh;
+        flex-direction: column;
+        right: 0;
+        left: 0;
+        top: 0;
+        height: 55vh;
+        background-color: rgba(190, 190, 190, 0.548);
+        display: flex;
+        list-style-type: none;
+        justify-content: space-between;
+        /* overflow: hidden; */
     }
     .submit{
         display: block
@@ -423,4 +465,46 @@ footer{
         display: flex;
         justify-content: center;
     }
+    .tools {
+        gap: 1px;
+        display: grid;
+        grid-template-columns: repeat(4, 25vw);
+        grid-template-rows: repeat(auto-fit,5em);
+        grid-template-areas: 
+        "moveUp moveDown sizeUp sizeDown"
+        " fillColor strokeColor switch switch "
+        "alignLeft  alignCenter alignRight trash"
+        "fontFamily fontFamily finish finish"
+        ;
+    }  
+    .changes-btn.btn9{
+        padding:20px
+    }
+    footer{
+        /* height: 10vh; */
+        display: none;
+    }
+    .btn14{
+        height: 90px;
+    }
+    .changes-btn.btn12{
+        background-color: #ff9800;
+    }
+    .footer-text{
+        font-size: 8px;
+    }
+
+    .nav-bar li{
+        margin: 0;
+    }
+    .nav-bar ul{
+        flex-direction: column;
+    }
+  .nav-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+  }
+    
 }
