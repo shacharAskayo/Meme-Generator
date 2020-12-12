@@ -262,6 +262,8 @@ function onMove(ev) {
         var meme = getMemeForDisplay()
         var x = ev.offsetX
         var y = ev.offsetY
+        console.log(x)
+        console.log(y)
         changePosition(x, y)
         renderCanvas(meme.selectedImgId)
     }
