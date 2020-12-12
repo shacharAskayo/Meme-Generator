@@ -60,7 +60,7 @@ function createLines(txt) {
         color: 'white',
         stroke: 'black',
         fontFamily: 'memes',
-        x: 50,
+        x: gCanvas.width/2,
         y: 50
     }
 }
