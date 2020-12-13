@@ -22,7 +22,7 @@
         <div class="nav-bar">
             <ul>
                 <li><button class="nav-btn" onclick="onOpenSaved()" class="saved">My Memes</button></li>
-                <li><button class="nav-btn btn-return" hidden onclick="onReturn()"> back to gallery</button></li>
+                <li><button class="nav-btn btn-return" hidden onclick="onReturn()">Back To Gallery </button></li>
             </ul>
         </div>
         <button hidden class="menu-btn" onclick="toggleMenu()">☰</button>
@@ -55,132 +55,132 @@
             </div>
 
 
-            <!-- <div> -->
+            <div class="all-tools">
+                <div class="submit">
+                    <div class="submit submit-tools">
 
-            <div class="submit">
-                <div class="submit submit-tools">
+                        <button class="btn save-btn" onclick="onSaveMeme()"> save</button>
 
-                    <button class="btn save-btn" onclick="onSaveMeme()"> save</button>
+                        <input oninput="onLiveUpdate(this.value)" class="input" name="text-line" type="text"
+                            placeholder="give us your funny text">
+                        <button class="btn btn-submit" onclick="onSubmit()"> <img class="icons" src="icons/add.png"
+                                alt=""></button>
+                    </div>
 
-                    <input class="input" name="text-line" type="text" placeholder="give us your funny text">
-                    <button class="btn btn-submit" onclick="onSubmit()"> <img class="icons" src="icons/add.png"
-                            alt=""></button>
+                    <div class="emojis-container">
+                        <ul class="emojis-list">
+                            <li draggable="true" onclick="onRenderEmoji(this)">😀 </li>
+                            <li draggable="true" onclick="onRenderEmoji(this)">😉</li>
+                            <li draggable="true" onclick="onRenderEmoji(this)">🧐</li>
+                            <li draggable="true" onclick="onRenderEmoji(this)">😝</li>
+                            <li draggable="true" onclick="onRenderEmoji(this)">😭</li>
+                            <li draggable="true" onclick="onRenderEmoji(this)">🥺</li>
+                            <li draggable="true" onclick="onRenderEmoji(this)">😩</li>
+                            <li draggable="true" onclick="onRenderEmoji(this)">😖</li>
+                            <li draggable="true" onclick="onRenderEmoji(this)">😈</li>
+                            <li draggable="true" onclick="onRenderEmoji(this)">👺</li>
+                            <li draggable="true" onclick="onRenderEmoji(this)">💩</li>
+                            <li draggable="true" onclick="onRenderEmoji(this)">👅</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="emojis-container">
-                    <ul class="emojis-list">
-                        <li draggable="true" onclick="onRenderEmoji(this)">😀 </li>
-                        <li draggable="true" onclick="onRenderEmoji(this)">😉</li>
-                        <li draggable="true" onclick="onRenderEmoji(this)">🧐</li>
-                        <li draggable="true" onclick="onRenderEmoji(this)">😝</li>
-                        <li draggable="true" onclick="onRenderEmoji(this)">😭</li>
-                        <li draggable="true" onclick="onRenderEmoji(this)">🥺</li>
-                        <li draggable="true" onclick="onRenderEmoji(this)">😩</li>
-                        <li draggable="true" onclick="onRenderEmoji(this)">😖</li>
-                        <li draggable="true" onclick="onRenderEmoji(this)">😈</li>
-                        <li draggable="true" onclick="onRenderEmoji(this)">👺</li>
-                        <li draggable="true" onclick="onRenderEmoji(this)">💩</li>
-                        <li draggable="true" onclick="onRenderEmoji(this)">👅</li>
-                    </ul>
-                </div>
-            </div>
+                <!-- </div> -->
 
-            <!-- </div> -->
-
-            <div class="user-prefs">
+                <div class="user-prefs">
 
 
-                <div class="tools">
+                    <div class="tools">
 
 
-                    <button class="changes-btn btn1" onclick="onMoveUp()">
-                        <img class="icons" src="icons/up.jpg" alt="">
-                    </button>
-
-                    <button class="changes-btn btn2" onclick="onMoveDown()">
-                        <img class="icons" src="icons/down.jpg" alt="">
-                    </button>
-
-
-
-                    <button class="changes-btn btn3" onclick="onIncreaseFont()">
-                        <img class="icons" src="icons/increase font - icon.png" alt="">
-                    </button>
-
-                    <button class="changes-btn btn4" onclick="onDecreaseFont()">
-                        <img class="icons" src="icons/decrease font - icon.png" alt="">
-                    </button>
-
-                    <div class="btn5">
-
-                        <input class="color" name="font-color" type="color">
-                        <button class="changes-btn btn5" onclick="onChangeColor()">
-                            <img class="icons " src="icons/font-color.jpg" alt="">
+                        <button class="changes-btn btn1" onclick="onMoveUp()">
+                            <img class="icons" src="icons/up.jpg" alt="">
                         </button>
 
-                    </div>
-                    <div class="btn6">
-                        <input class="color" name="stroke-color" type="color">
-                        <button class="changes-btn btn6" onclick="onChangeStroke()">
-                            <img class="icons" src="icons/stroke-color.jpg" alt="">
-                        </button>
-                    </div>
-
-                    <select class="btn7" onclick="onChangeFont(this)" name="fony-family" id="">
-                        <option value=""> chose a font</option>
-                        <option value="memes">memes</option>
-                        <option value="ariel">ariel</option>
-                        <option value="lato">lato</option>
-                    </select>
-
-                    <button class="changes-btn btn8" onclick="onDeleteLine()">
-                        <img class="icons" src="icons/trash.png" alt="">
-                    </button>
-
-                    <!-- <div class="align"> -->
-                    <button class="changes-btn btn9" onclick="onAlignLeft(this)"> <img class="icons"
-                            src="icons/align-to-left.png" alt=""> </button>
-                    <button class="changes-btn btn10" onclick="onAlignCenter(this)"> <img class="icons"
-                            src="icons/align-to-center.png" alt=""> </button>
-                    <button class="changes-btn btn11" onclick="onAlignRight(this)"> <img class="icons"
-                            src="icons/align-to-right.png" alt=""> </button>
-                    <!-- </div> -->
-
-
-                    <button class="changes-btn  btn12" onclick="onSwitchLines()">
-                        <img class="icons" src="icons/switch.jpg" alt="">
-                    </button>
-                    <button class="changes-btn btn13" onclick="finishEdit()">
-                        <p class="finish-editing">
-                            Finish <br>
-                            Editing
-                        </p>
-                    </button>
-
-                    <!-- </div> -->
-
-                    <div class="btn14">
-                        <button class="changes-btn download">
-                            <a href="#" onclick="downloadCanvas(this)">
-
-                                <img class="icons" src="icons/save.jpg" alt=""></a>
+                        <button class="changes-btn btn2" onclick="onMoveDown()">
+                            <img class="icons" src="icons/down.jpg" alt="">
                         </button>
 
+
+
+                        <button class="changes-btn btn3" onclick="onIncreaseFont()">
+                            <img class="icons" src="icons/increase font - icon.png" alt="">
+                        </button>
+
+                        <button class="changes-btn btn4" onclick="onDecreaseFont()">
+                            <img class="icons" src="icons/decrease font - icon.png" alt="">
+                        </button>
+
+                        <div class="btn5">
+
+                            <input class="color" name="font-color" type="color">
+                            <button class="changes-btn btn5" onclick="onChangeColor()">
+                                <img class="icons " src="icons/font-color.jpg" alt="">
+                            </button>
+
+                        </div>
+                        <div class="btn6">
+                            <input class="color" name="stroke-color" type="color">
+                            <button class="changes-btn btn6" onclick="onChangeStroke()">
+                                <img class="icons" src="icons/stroke-color.jpg" alt="">
+                            </button>
+                        </div>
+
+                        <select class="btn7" onclick="onChangeFont(this)" name="fony-family" id="">
+                            <option value="">  choose a font </option>
+                            <option value="memes">memes</option>
+                            <option value="ariel">ariel</option>
+                            <option value="lato">lato</option>
+                        </select>
+
+                        <button class="changes-btn btn8" onclick="onDeleteLine()">
+                            <img class="icons" src="icons/trash.png" alt="">
+                        </button>
+
+                        <!-- <div class="align"> -->
+                        <button class="changes-btn btn9" onclick="onAlignLeft(this)"> <img class="icons"
+                                src="icons/align-to-left.png" alt=""> </button>
+                        <button class="changes-btn btn10" onclick="onAlignCenter(this)"> <img class="icons"
+                                src="icons/align-to-center.png" alt=""> </button>
+                        <button class="changes-btn btn11" onclick="onAlignRight(this)"> <img class="icons"
+                                src="icons/align-to-right.png" alt=""> </button>
+                        <!-- </div> -->
+
+
+                        <button class="changes-btn  btn12" onclick="onSwitchLines()">
+                            <img class="icons" src="icons/switch.jpg" alt="">
+                        </button>
+                        <button class="changes-btn btn13" onclick="finishEdit()">
+                            <p class="finish-editing">
+                                Finish <br>
+                                Editing
+                            </p>
+                        </button>
+
+                        <!-- </div> -->
+
+                        <div class="btn14">
+                            <button class="changes-btn download">
+                                <a href="#" onclick="downloadCanvas(this)">
+
+                                    <img class="icons download" src="icons/save.jpg" alt=""></a>
+                            </button>
+
+                        </div>
+
                     </div>
-
-
-
                 </div>
             </div>
         </div>
+    </div>
 
-        <footer>
+    <footer>
 
-            <p class="footer-text">
-                © 2020 MemeGen.com - All Rights Reserved - Find more free memes at nextDevGen.com
-            </p>
+        <p class="footer-text">
+            © 2020 MemeGen.com - All Rights Reserved - Find more free memes at nextDevGen.com
+        </p>
 
-        </footer>
+    </footer>
 
     </div>
 

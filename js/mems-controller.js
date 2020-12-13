@@ -39,7 +39,7 @@ function drawImg(image) {
             drawText(line.txt, line.x, line.y, line.size, line.color, line.stroke, line.align, line.fontFamily)
 
         })
-        if (meme.lines.length > 0) {
+        if (meme.lines.length > 1) {
             drawRect(meme.lines[meme.selectedLineIdx].x, meme.lines[meme.selectedLineIdx].y, ((meme.lines[meme.selectedLineIdx].txt.length) + (meme.lines[meme.selectedLineIdx].size)), meme.lines[meme.selectedLineIdx].size)
         }
     }
@@ -99,13 +99,19 @@ function onChoseImg(id) {
 }
 
 
+function onLiveUpdate(text){
+    var meme = getMemeForDisplay()
+    editLine(text)
+    renderCanvas(meme.selectedImgId)
+}
+
 function onSubmit() {
     gEdit = true
     var meme = getMemeForDisplay()
     var elInputTxt = document.querySelector('input[name=text-line')
     var memeText = elInputTxt.value
-    updateLinesTxt(memeText)
     elInputTxt.value = ''
+    nextLine()
     renderCanvas(meme.selectedImgId)
 
 }
@@ -165,17 +171,13 @@ function drawRect(x, y, width, height) {
     var meme = getMemeForDisplay()
     width = width / 7
     gCtx.beginPath()
-    gCtx.strokeStyle = 'white'
+    gCtx.strokeStyle = 'black'
     var align = meme.lines[meme.selectedLineIdx].align
     if (meme.lines[meme.selectedLineIdx].txt.length >= 6 && meme.lines[meme.selectedLineIdx].txt.length < 11) {
-        console.log('bigger the 6')
         width *= 2
-        console.log(width)
     }
     else if (meme.lines[meme.selectedLineIdx].txt.length >= 11) {
-        console.log('bigger the 11')
         width *= 3
-        console.log(width)
     }
     if (align === 'left') {
         gCtx.rect(x - (width * 1.1), y - height, width * 13, height + 5)
@@ -211,21 +213,19 @@ function onSaveMeme() {
 
     })
     elSaved.innerHTML = strHTML
-
 }
+
 
 function onOpenSaved() {
     var elSaved = document.querySelector('.saved-memes')
     elSaved.hidden = false
     elSaved.style.display = 'grid'
-
     var elContainer = document.querySelector('.container')
     elContainer.hidden = true
     var elReturn = document.querySelector('.btn-return')
     elReturn.hidden = false
     var elGalleryContainer = document.querySelector('.gallery-container')
     elGalleryContainer.hidden = true
-
 
 }
 
@@ -249,6 +249,7 @@ function onRenderEmoji(emojis, ev) {
 
 function onDrag(ev) {
     gMousedown = true
+    // if(ev.offsetX )
 }
 
 
@@ -261,8 +262,6 @@ function onMove(ev) {
         var meme = getMemeForDisplay()
         var x = ev.offsetX
         var y = ev.offsetY
-        console.log(x)
-        console.log(y)
         changePosition(x, y)
         renderCanvas(meme.selectedImgId)
     }
@@ -307,6 +306,7 @@ function onFilterGallery(ev) {
 }
 
 function handleTouch(ev) {
+    console.log();
     var meme = getMemeForDisplay()
     ev.preventDefault()
     gCanvas = document.querySelector('.my-canvas')

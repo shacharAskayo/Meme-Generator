@@ -1,14 +1,14 @@
 'use strict'
 
-var gCanvas;
+var gCanvas = document.querySelector('.my-canvas')
 var gCtx;
 var gKeywords = { 'happy': 12, 'funny puk': 1 }
 
 var gImgs = [
     { id: 0, url: 'img/1.jpg', keyWords: ['funny,sad'] },
-    { id: 1, url: 'img/2.jpg', keyWords: ['sad'] },
-    { id: 2, url: 'img/3.jpg', keyWords: ['sleep'] },
-    { id: 3, url: 'img/4.jpg', keyWords: ['funny'] },
+    { id: 1, url: 'img/2.jpg', keyWords: ['sad,animal'] },
+    { id: 2, url: 'img/3.jpg', keyWords: ['sleep,animal'] },
+    { id: 3, url: 'img/4.jpg', keyWords: ['animal'] },
     { id: 4, url: 'img/5.jpg', keyWords: ['funny'] },
     { id: 5, url: 'img/6.jpg', keyWords: ['funny'] },
     { id: 6, url: 'img/7.jpg', keyWords: ['funny'] },
@@ -21,26 +21,12 @@ var gImgs = [
     { id: 13, url: 'img/14.jpg', keyWords: ['funny'] },
     { id: 14, url: 'img/15.jpg', keyWords: ['funny'] },
     { id: 15, url: 'img/16.jpg', keyWords: ['funny'] },
-    { id: 16, url: 'img/17.jpg', keyWords: ['funny'] },
+    { id: 16, url: 'img/17.jpg', keyWords: ['animal'] },
     { id: 17, url: 'img/18.jpg', keyWords: ['funny'] },
 ];
 
 
-// createGallery()
-// function createGallery() {
-//     for (var i = 0; i <= 17; i++) {
-//         createImg(i, i + 1)
-//     }
-// }
 
-// function createImg(id, imgNum) {
-//     var meme = {
-//         id: id,
-//         url: `img/${imgNum}.jpg`,
-//         keywords: ['funny']
-//     }
-//     gImgs.push(meme)
-// }
 
 var gSavedMemes = []
 
@@ -49,8 +35,9 @@ var gSavedMemes = []
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
-    lines: []
+    lines: [createLines('')]
 }
+
 
 function createLines(txt) {
     return {
@@ -60,9 +47,15 @@ function createLines(txt) {
         color: 'white',
         stroke: 'black',
         fontFamily: 'memes',
-        x: gCanvas.width/2,
-        y: 50
+        x: gCanvas.width / 2,
+        y: getRandomInt(50, gCanvas.height)
     }
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function GetImages() {
@@ -70,10 +63,17 @@ function GetImages() {
 
 }
 
+    
+
+
 
 function init() {
     initGallery()
+    console.log(document.body.clientWidth)
 }
+
+
+
 function showCanvas() {
     var elCanvasContainer = document.querySelector('.canvas-container')
     gCanvas = document.querySelector('.my-canvas')
@@ -81,11 +81,10 @@ function showCanvas() {
     gCanvas.width = (elCanvasContainer.offsetWidth) * 0.8
     gCanvas.height = (elCanvasContainer.offsetHeight) * 0.85
 }
-function touchAndDrop(x,y){
-    console.log('xx',x)
-    console.log('ofset',gCtx.canvas.offsetLeft)
-    var X = x-gCtx.canvas.offsetLeft
-    var Y = y-gCtx.canvas.offsetTop
+
+function touchAndDrop(x, y) {
+    var X = x - gCtx.canvas.offsetLeft
+    var Y = y - gCtx.canvas.offsetTop
 
     gMeme.lines[gMeme.selectedLineIdx].x = X
     gMeme.lines[gMeme.selectedLineIdx].y = Y
@@ -111,14 +110,26 @@ function clearCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
 }
 
-function updateLinesTxt(text) {
-    gMeme.lines.push(createLines(text))
-    gMeme.selectedLineIdx++
-    if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0
-    // gMeme.selectedLineIdx++
 
+function editLine(txt) {
+    if (gMeme.selectedLineIdx !== -1) {
+        gMeme.lines[gMeme.selectedLineIdx].txt = txt
+    }
+    else {
+        nextLine
+    }
 
 }
+
+
+
+
+function nextLine() {
+    gMeme.lines.push(createLines('type here'))
+    gMeme.selectedLineIdx++
+}
+
+
 
 function renderEmoji(emoji) {
     gMeme.lines.push(createLines(emoji))
@@ -176,9 +187,9 @@ function clearText() {
 
 function changePosition(x, y) {
     // console.log('x',x)
-    // console.log('y',y)
     gMeme.lines[gMeme.selectedLineIdx].x = x
     gMeme.lines[gMeme.selectedLineIdx].y = y
+
 
 }
 
@@ -199,13 +210,14 @@ function deleteLine() {
 
 var gImgsCopy = [...gImgs];
 function filterGallery(letter) {
+    console.log(letter)
     var filterdImage = gImgs.filter((img, idx) => {
-        idx = img.keyWords.length-1
+        idx = img.keyWords.length - 1
         return img.keyWords[idx].split('').includes(letter)
     })
     gImgs = filterdImage
 
-    
+
 }
 
 
